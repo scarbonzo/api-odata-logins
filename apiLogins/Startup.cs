@@ -39,10 +39,13 @@ public class Startup
             app.UseDeveloperExceptionPage();
         }
 
+        app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
         app.UseMvc(routeBuilder =>
         {
             routeBuilder.EnableDependencyInjection();
             routeBuilder.Filter().Expand().Select().Count().MaxTop(null).OrderBy();
         });
+        
     }
 }
